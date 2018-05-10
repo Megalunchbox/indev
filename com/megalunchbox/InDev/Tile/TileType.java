@@ -2,6 +2,8 @@ package com.megalunchbox.InDev.Tile;
 
 import com.badlogic.gdx.graphics.Texture;
 
+import java.util.HashMap;
+
 public enum TileType {
 
 
@@ -61,5 +63,18 @@ public enum TileType {
 
     }
 
+
+    private static HashMap<Integer, TileType> tileMap;
+
+    static {
+        tileMap = new HashMap<Integer, TileType>();
+        for (TileType tileType : TileType.values()) {
+            tileMap.put(tileType.getId(), tileType);
+        }
+    }
+
+    public static TileType getTileTypeById (int id) {
+        return tileMap.get(id);
+    }
 
 }
