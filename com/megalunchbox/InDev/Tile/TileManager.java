@@ -1,10 +1,26 @@
-public class TileManager { 
+package com.megalunchbox.InDev.Tile;
 
-  public TileManager {
-  //ToDo: add ArrayList for blocks
+import java.util.ArrayList;
+
+
+
+public class TileManager {
+
+
+  ArrayList<TileType> tiles = new ArrayList<TileType>();
+
+  public TileManager () {
+
+
+
   
   }
 
+  public void createTile() {
 
+    tiles.add(new TileType());
+
+
+  }
 
 }

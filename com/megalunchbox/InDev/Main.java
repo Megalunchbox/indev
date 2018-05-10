@@ -6,9 +6,8 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.megalunchbox.InDev.Graphics.Render;
+import com.megalunchbox.InDev.Game.Render;
 import com.megalunchbox.InDev.Map.RenderMap;
-import com.megalunchbox.InDev.Util.Font.Font;
 
 public class Main extends ApplicationAdapter {
 

@@ -1,4 +1,4 @@
-package com.megalunchbox.InDev.Graphics;
+package com.megalunchbox.InDev.Game;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;

@@ -9,8 +9,7 @@ public enum TileType {
 
      AIR("Air", 0, false, false, new Texture("Air.png")),
     GRASS("Grass", 0, true, false, new Texture("Grass.png")),
-    DIRT("DIRT", 2, true, false, createTexture("Dirt.png"));
-
+    DIRT("Dirt", 2, true, false, createTexture("Dirt.png"));
 
 
 
@@ -21,6 +20,7 @@ public enum TileType {
     //Integer values
     private int id;
     private int tileSize = 16;
+
     private int x;
     private int y;
      
@@ -28,7 +28,7 @@ public enum TileType {
     private boolean collidable;
     private boolean hazard;
 
-    private TileType(String name, int id, boolean collidable, boolean hazard, Texture texture), int x, int y {
+    private TileType(String name, int id, boolean collidable, boolean hazard, Texture textureint) {
         this.name = name;
         this.id = id;
         this.collidable = collidable;
@@ -79,7 +79,7 @@ public enum TileType {
         return x;    
     }
     
-    public int getY();
+    public int getY() {
         return y;
      }
 
