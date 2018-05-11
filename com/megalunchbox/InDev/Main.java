@@ -16,13 +16,18 @@ public class Main extends ApplicationAdapter {
 	BitmapFont font;
 	RenderMap rMap;
 	Render render;
+
+	int fps = 60;
+	int frameCount = 0;
+    boolean programRunning = true;
+
+
 	@Override
 	public void create () {
 
 		font = new BitmapFont();
 		rMap = new RenderMap();
 		rMap.create();
-		render = new Render();
 
 	}
 
@@ -32,11 +37,14 @@ public class Main extends ApplicationAdapter {
 		Gdx.gl.glClearColor(0, 0, 0, 0);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-		rMap.render();
-		render.render();
-		cam = new OrthographicCamera();
-		cam.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-	}
+            rMap.render();
+
+            cam = new OrthographicCamera();
+            cam.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        }
+
+
+
 	
 	@Override
 	public void dispose () {

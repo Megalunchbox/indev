@@ -7,19 +7,19 @@ import java.util.ArrayList;
 public class TileManager {
 
 
-  ArrayList<TileType> tiles = new ArrayList<TileType>();
+  ArrayList<TileType> tileList = new ArrayList<TileType>();
 
   public TileManager () {
 
-
-
-  
   }
 
-  public void createTile() {
+  public void createTile(TileType tileType) {
 
-    tiles.add(new TileType());
+    tileList.add(tileType);
 
+  }
+
+  public void getTileCoords () {
 
   }
 

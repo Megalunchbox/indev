@@ -13,9 +13,14 @@ public class RenderMap {
     static SpriteBatch batch;
     final TileType[] tiles = TileType.values();
 
+
+    private int width  = Gdx.graphics.getWidth()/16;
+    private int height = Gdx.graphics.getHeight()/16;
+    private int tileSize = TileType.getTileSize();
+
     public void create() {
 
-        batch = new SpriteBatch();
+        RenderMap.batch = new SpriteBatch();
 
         }
 
@@ -24,12 +29,12 @@ public class RenderMap {
     public void render() {
 
 
-    for (int y = 0; y <= Gdx.graphics.getHeight() - 16; y +=16) {
+    for (int y = 0; y <= Gdx.graphics.getHeight() - 16; y += TileType.getTileSize()) {
 
-        for (int x = 0; x <= Gdx.graphics.getWidth(); x += 16) {
+        for (int x = 0; x <= Gdx.graphics.getWidth(); x += TileType.getTileSize()) {
 
             RenderMap.batch.begin();
-            RenderMap.batch.draw(tiles[1].getTexture(), x, y);
+            RenderMap.batch.draw(tiles[0].getTexture(), x, y);
             RenderMap.batch.end();
 
 

@@ -19,7 +19,8 @@ public enum TileType {
 
     //Integer values
     private int id;
-    private int tileSize = 16;
+
+    static int tileSize = 16;
 
     private int x;
     private int y;
@@ -28,7 +29,7 @@ public enum TileType {
     private boolean collidable;
     private boolean hazard;
 
-    private TileType(String name, int id, boolean collidable, boolean hazard, Texture textureint) {
+    private TileType(String name, int id, boolean collidable, boolean hazard, Texture texture) {
         this.name = name;
         this.id = id;
         this.collidable = collidable;
@@ -93,5 +94,9 @@ public enum TileType {
 
     public void setTexture(Texture texture) {
          this.texture = texture;
+    }
+
+    public static int getTileSize() {
+        return tileSize;
     }
 }
