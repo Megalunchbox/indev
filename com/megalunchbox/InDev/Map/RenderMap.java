@@ -4,12 +4,16 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.megalunchbox.InDev.Tile.TileManager;
 import com.megalunchbox.InDev.Tile.TileType;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class RenderMap {
 
 
-
+    TileType[] a;
     static SpriteBatch batch;
     final TileType[] tiles = TileType.values();
 
@@ -22,24 +26,26 @@ public class RenderMap {
 
         RenderMap.batch = new SpriteBatch();
 
+
         }
 
 
 
     public void render() {
 
+        TileManager clonedManager = Map.manager;
 
-    for (int y = 0; y <= Gdx.graphics.getHeight() - 16; y += TileType.getTileSize()) {
+           for (int i = 0; i <= clonedManager.getList().toArray().length; i++) {
+                RenderMap.batch.begin();
+                RenderMap.batch.draw(clonedManager.getList().get(i).getTexture(), Map.manager.getList().get(i).getX(), Map.manager.getList().get(i).getY());
+                RenderMap.batch.end();
+                if (i == 120) break;
+            }
 
-        for (int x = 0; x <= Gdx.graphics.getWidth(); x += TileType.getTileSize()) {
+        System.out.println("manager size: " + Map.manager.getList().size());
+        System.out.println(Map.manager.getList());
+        System.out.println(Map.manager.getList().size());
 
-            RenderMap.batch.begin();
-            RenderMap.batch.draw(tiles[0].getTexture(), x, y);
-            RenderMap.batch.end();
-
-
-        }
-        }
     }
 
     public void dispose() {

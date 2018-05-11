@@ -6,17 +6,29 @@ import com.megalunchbox.InDev.Map.RenderMap;
 
 public class Render {
 
-    RenderMap rMap;
 
 
-    public void render () {
+    public void create () {
 
-
-
+        new RenderMap().create();
 
     }
 
 
+    public void render (OrthographicCamera cam) {
+
+        new RenderMap().render();
+
+        cam = new OrthographicCamera();
+        cam.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+    }
+
+    public void dispose() {
+
+        new RenderMap().dispose();
+
+
+    }
 
 
 

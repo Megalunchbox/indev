@@ -4,43 +4,30 @@ import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.megalunchbox.InDev.Game.Create;
+import com.megalunchbox.InDev.Game.Dispose;
 import com.megalunchbox.InDev.Game.Render;
-import com.megalunchbox.InDev.Map.RenderMap;
+import com.megalunchbox.InDev.Game.Update;
+import com.megalunchbox.InDev.Map.CreateMap;
 
 public class Main extends ApplicationAdapter {
 
-	Texture img;
 	OrthographicCamera cam;
-	BitmapFont font;
-	RenderMap rMap;
-	Render render;
-
-	int fps = 60;
-	int frameCount = 0;
-    boolean programRunning = true;
-
 
 	@Override
 	public void create () {
-
-		font = new BitmapFont();
-		rMap = new RenderMap();
-		rMap.create();
-
+		new Create().create();
+        new CreateMap().createMap();
 	}
 
 	@Override
 	public void render () {
 
-		Gdx.gl.glClearColor(0, 0, 0, 0);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		    g();
 
-            rMap.render();
+		    new Update().update(cam);
+            new Render().render(cam);
 
-            cam = new OrthographicCamera();
-            cam.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         }
 
 
@@ -48,8 +35,13 @@ public class Main extends ApplicationAdapter {
 	
 	@Override
 	public void dispose () {
+	    new Dispose().dispose();
 
-		font.dispose();
-		rMap.dispose();
 	}
+
+	public void g() {
+
+        Gdx.gl.glClearColor(0, 0, 0, 0);
+        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+    }
 }

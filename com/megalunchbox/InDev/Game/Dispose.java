@@ -2,23 +2,13 @@ package com.megalunchbox.InDev.Game;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
 
-public class Update {
+public class Dispose {
 
-    public void create() {
-
-
-    }
-
-
-    public void update(OrthographicCamera cam) {
-
-
-    }
 
     public void dispose() {
 
-
-
-
+        new Render().dispose();
+        new Update().dispose();
     }
+
 }
