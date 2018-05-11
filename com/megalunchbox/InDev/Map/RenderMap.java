@@ -35,12 +35,11 @@ public class RenderMap {
 
         TileManager clonedManager = Map.manager;
 
-           for (int i = 0; i < clonedManager.getList().toArray().length; i++) {
-                RenderMap.batch.begin();
-                RenderMap.batch.draw(clonedManager.getList().get(i).getTexture(), Map.manager.getList().get(i).getX(), Map.manager.getList().get(i).getY());
-                RenderMap.batch.end();
-
+        RenderMap.batch.begin();
+           for (int i = 0; i < Map.manager.getList().size(); i++) {
+                RenderMap.batch.draw(Map.manager.getList().get(i).getTexture(), Map.manager.getList().get(i).getX(), Map.manager.getList().get(i).getY());
             }
+        RenderMap.batch.end();
 
         System.out.println("manager size: " + Map.manager.getList().size());
         System.out.println(Map.manager.getList());

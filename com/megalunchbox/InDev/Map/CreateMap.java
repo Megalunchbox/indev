@@ -18,9 +18,10 @@ public class CreateMap {
             for (int x = 0; x < Gdx.graphics.getWidth(); x += tileSize) {
 
 
-                if (y < height/5) {
+                if (y < height / 9 * 16) {
 
-                    Map.manager.createTile(TileType.DIRT, x, y);
+                        Map.manager.createTile(TileType.DIRT, x, y);
+
 
                 }
 
