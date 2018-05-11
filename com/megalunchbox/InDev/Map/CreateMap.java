@@ -11,11 +11,11 @@ public class CreateMap {
     int tileSize = TileType.getTileSize();
 
     public void createMap() {
-        for (int y = 0; y <= Gdx.graphics.getHeight() - 16; y += tileSize)
+        for (int y = 0; y < Gdx.graphics.getHeight() - 16; y += tileSize)
 
         {
 
-            for (int x = 0; x <= Gdx.graphics.getWidth(); x += tileSize) {
+            for (int x = 0; x < Gdx.graphics.getWidth(); x += tileSize) {
 
 
                 if (y < height/5) {
