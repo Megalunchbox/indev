@@ -28,9 +28,24 @@ public class TileManager {
   public int getY(int i) {
     return tileList.get(i).getY();
   }
+  
 
   public LinkedList<TileType> getList() {
     return tileList;
   }
 
+  public TileType getTileByCoordinate(int x, int y) {
+    for (int i = 0; i < tileList.size(); i++ ) {
+      TileType tile = tileList.get(i);
+      if (int x == tile.getY()) {
+        if (int y == tile.getX()) {
+          return tile;
+        }
+      }
+    }
+    
+    return TileType.AIR
+    
+  }
+  
 }
