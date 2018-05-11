@@ -10,6 +10,12 @@ public class CreateMap {
     int height = Gdx.graphics.getHeight()/16;
     int tileSize = TileType.getTileSize();
 
+    /*
+    Method: createMap()
+    Creates new map,
+    TODO: add noise and random generation
+    */
+    
     public void createMap() {
         for (int y = 0; y < Gdx.graphics.getHeight() - 16; y += tileSize)
 
