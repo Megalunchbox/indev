@@ -1,8 +1,6 @@
 package com.megalunchbox.InDev.Tile;
 
 import com.megalunchbox.InDev.Map.Map;
-
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 
@@ -36,7 +34,7 @@ public class TileManager {
   }
 
   /**
-   * TODO: Entirely redo this buggy piece of code, it is very inefficient and it drains resources
+   *  Gets a tile by its coordinates within the map
    *
    * @param x
    * @param y
@@ -51,7 +49,8 @@ public class TileManager {
     }
     if (y != 0) {
       return tileList.get(expression);
-    } else return tileList.get(x);
+    }
+    else return tileList.get(x);
   }
   
 }

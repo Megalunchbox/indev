@@ -23,10 +23,14 @@ public class CreateMap {
 
 
 
-                        if (y < Map.height/2) {
+                        if (y < 3) {
                             Map.manager.createTile(TileType.DIRT, x, y);
+
                         }
-                        if (y > Map.height/2) {
+                        if (y > 3 && y < 6) {
+                            Map.manager.createTile(TileType.GRASS, x, y);
+                        }
+                        if (y > 6) {
                             Map.manager.createTile(TileType.AIR, x, y);
                         }
 

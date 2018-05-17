@@ -26,7 +26,6 @@ public class RenderMap {
      */
     public void render() {
 
-        //TODO: Fill empty tiles with air and fix multiple tile rendering.
         TileType tile;
         RenderMap.batch.begin();
         for (int y = 0; y < Map.height; y++) {
