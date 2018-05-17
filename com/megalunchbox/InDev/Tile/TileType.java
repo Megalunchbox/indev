@@ -77,11 +77,11 @@ public enum TileType {
     }
      
     public int getX() {
-        return x;    
+        return this.x;
     }
     
     public int getY() {
-        return y;
+        return this.y;
      }
 
     public void setX(int x) {
@@ -91,7 +91,10 @@ public enum TileType {
     public void setY(int y) {
         this.y = y;    
     }
-
+    public void setLoc(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
     public void setTexture(Texture texture) {
          this.texture = texture;
     }

@@ -1,13 +1,10 @@
 package com.megalunchbox.InDev.Map;
 
 import com.badlogic.gdx.Gdx;
-import com.megalunchbox.InDev.Tile.TileManager;
 import com.megalunchbox.InDev.Tile.TileType;
 
 public class CreateMap {
 
-    int width = Gdx.graphics.getWidth()/16;
-    int height = Gdx.graphics.getHeight()/16;
     int tileSize = TileType.getTileSize();
 
     /*
@@ -15,21 +12,24 @@ public class CreateMap {
     Creates new map,
     TODO: add noise and random generation
     */
-    
+
+
     public void createMap() {
-        for (int y = 0; y < Gdx.graphics.getHeight() - 16; y += tileSize)
+        for (int y = 0; y <  Map.height; y++)
 
         {
 
-            for (int x = 0; x < Gdx.graphics.getWidth(); x += tileSize) {
+            for (int x = 0; x < Map.width; x++) {
 
 
-                if (y < height / 9 * 16) {
 
-                        Map.manager.createTile(TileType.DIRT, x, y);
+                        if (y < Map.height/2) {
+                            Map.manager.createTile(TileType.DIRT, x, y);
+                        }
+                        if (y > Map.height/2) {
+                            Map.manager.createTile(TileType.AIR, x, y);
+                        }
 
-
-                }
 
 
 

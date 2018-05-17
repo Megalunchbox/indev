@@ -1,11 +1,12 @@
 package com.megalunchbox.InDev.Tile;
 
+import com.megalunchbox.InDev.Map.Map;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 
 
 public class TileManager {
-
 
   LinkedList<TileType> tileList;
 
@@ -34,18 +35,23 @@ public class TileManager {
     return tileList;
   }
 
+  /**
+   * TODO: Entirely redo this buggy piece of code, it is very inefficient and it drains resources
+   *
+   * @param x
+   * @param y
+   * @return TileType
+   */
   public TileType getTileByCoordinate(int x, int y) {
-    for (int i = 0; i < tileList.size(); i++ ) {
-      TileType tile = tileList.get(i);
-      if (int x == tile.getY()) {
-        if (int y == tile.getX()) {
-          return tile;
-        }
-      }
+    int expression = (y - 1) * Map.getWidth() + x;
+    if (expression >= tileList.size()) {
+      TileType tile = TileType.AIR;
+      tile.setLoc(x, y);
+      return tile;
     }
-    
-    return TileType.AIR
-    
+    if (y != 0) {
+      return tileList.get(expression);
+    } else return tileList.get(x);
   }
   
 }
