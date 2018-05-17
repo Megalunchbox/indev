@@ -3,7 +3,8 @@ package com.megalunchbox.InDev.Entity;
 import com.badlogic.gdx.graphics.Texture;
 
 public class Entity {
-
+    
+    int x, y;
     int health;
     int maxHealth;
     int maxSpeed;
@@ -21,7 +22,6 @@ public class Entity {
         this.texture = texture;
         this.maxHealth = maxHealth;
         this.alive = true;
-        
     }
 
     public int getHealth() {
@@ -43,7 +43,12 @@ public class Entity {
     public int getSpeed() {
      return speed;   
     }
-    
+    public int getX() {
+     return x;   
+    }
+    public int getY() {
+     return y;   
+    }
     public boolean isLiving() {
      return alive;   
     }
@@ -57,5 +62,15 @@ public class Entity {
     }
     public void kill() {
      alive = false;   
+    }
+    public void setLoc(int x, int y) {
+     this.x = x;
+     this.y = y;
+    }
+    public void setX(int x) {
+     this.x = x;
+    }
+    public void setY(int y) {
+    this.y = y;
     }
 }
