@@ -53,4 +53,25 @@ public class TileManager {
     else return tileList.get(x);
   }
   
+  public void copyTileInList(TileType tile, int x, int y) {
+     tileList.set((y - 1) * Map.getWidth() + x, tile);
+     tile.setX(x);
+     tile.setY(y);
+  }
+  
+  public void replaceTileInList(TileType replace, TileType with) {
+    tileList.set((replace.getY()) * Map.getWidth() + replace.getX()), tileType with);
+  }
+  
+  
+  moveTileInList(int fromX, int fromY, int toY, int toX) {
+    TileType fromTile = getTileByCoordinate(fromX, fromY);
+    TileType toTile = getTileByCoordinate(toY, toX);
+    
+    if (fromTile == TileType.AIR) return
+    if (toTile == TileType.AIR) return
+    
+    tileList.set()
+  }
+  
 }
