@@ -60,18 +60,22 @@ public class TileManager {
   }
   
   public void replaceTileInList(TileType replace, TileType with) {
-    tileList.set((replace.getY()) * Map.getWidth() + replace.getX()), tileType with);
+    tileList.set(replace.getY()) * Map.getWidth() + replace.getX(), tileType with);
   }
   
   
-  moveTileInList(int fromX, int fromY, int toY, int toX) {
+  public void moveTileInList(int fromX, int fromY, int toY, int toX) {
     TileType fromTile = getTileByCoordinate(fromX, fromY);
     TileType toTile = getTileByCoordinate(toY, toX);
+    TileType air = TileType.AIR;
+    air.setLoc(fromX, fromY);
+    if (fromTile.getName() == TileType.getName()) return;
+    if (toTile.getName() != TileType.AIR.getName()) return;
     
-    if (fromTile == TileType.AIR) return
-    if (toTile == TileType.AIR) return
+    tileList.set((fromY - 1) * Map.getWidth() + fromX, air);
+    tileList.set((toY - 1) * Map.getWidth() + toX);
     
-    tileList.set()
+    
   }
   
 }
