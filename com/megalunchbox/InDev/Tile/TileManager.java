@@ -60,7 +60,7 @@ public class TileManager {
   }
   
   public void replaceTileInList(TileType replace, TileType with) {
-    tileList.set(replace.getY()) * Map.getWidth() + replace.getX(), tileType with);
+    tileList.set((replace.getY()) * Map.getWidth() + replace.getX(), with);
   }
   
   
@@ -69,11 +69,11 @@ public class TileManager {
     TileType toTile = getTileByCoordinate(toY, toX);
     TileType air = TileType.AIR;
     air.setLoc(fromX, fromY);
-    if (fromTile.getName() == TileType.getName()) return;
+    if (fromTile.getName() == TileType.AIR.getName()) return;
     if (toTile.getName() != TileType.AIR.getName()) return;
     
     tileList.set((fromY - 1) * Map.getWidth() + fromX, air);
-    tileList.set((toY - 1) * Map.getWidth() + toX);
+    tileList.set((toY - 1) * Map.getWidth() + toX, fromTile);
     
     
   }

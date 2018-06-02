@@ -5,8 +5,6 @@ import com.megalunchbox.InDev.Tile.TileType;
 
 public class CreateMap {
 
-    int tileSize = TileType.getTileSize();
-
     /*
     Method: createMap()
     Creates new map,
@@ -23,19 +21,11 @@ public class CreateMap {
 
 
 
-                        if (y < 3) {
-                            Map.manager.createTile(TileType.DIRT, x, y);
-
-                        }
-                        if (y > 3 && y < 6) {
-                            Map.manager.createTile(TileType.GRASS, x, y);
-                        }
-                        if (y > 6) {
-                            Map.manager.createTile(TileType.AIR, x, y);
-                        }
-
-
-
+                if (x == 4) {
+                    Map.manager.createTile(TileType.STRAIGHT_WALL, x, y);
+                } else {
+                    Map.manager.createTile(TileType.AIR, x, y);
+                }
 
 
             }

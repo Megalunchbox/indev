@@ -11,18 +11,32 @@ abstract class Entity {
     int mass;
     int speed = 0;
     boolean alive;
-    
     Texture texture;
     
-    public Entity(int health, int maxSpeed, int mass, Texture texture, int maxHealth) {
+    public Entity() {
         
-        this.health = health;
-        this.maxSpeed = maxSpeed;
-        this.mass = mass;
-        this.texture = texture;
-        this.maxHealth = maxHealth;
-        this.alive = true;
+        health = 20;
+        maxSpeed = 5;
+        mass = 120;
+        texture = null;
+        maxHealth = 100;
+        alive = true;
     }
+
+    public Entity (Texture texture, int health, int maxHealth, int mass, int maxSpeed) {
+
+        this.texture = texture;
+        this.health = health;
+        this.maxHealth = maxHealth;
+        this.mass = mass;
+        this.alive = true;
+        this.texture = texture;
+        this.maxSpeed = maxSpeed;
+
+    }
+
+
+
 
     public int getHealth() {
         return health;  
@@ -81,5 +95,14 @@ abstract class Entity {
 
     public void setMaxSpeed(int maxSpeed) {
         this.maxSpeed = maxSpeed;
+    }
+
+    public boolean checkDeath() {
+        if (alive) {
+            if (health > 0) {
+                return true;
+            }
+        }
+        return false;
     }
 }

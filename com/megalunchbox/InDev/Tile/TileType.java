@@ -7,27 +7,19 @@ import java.util.HashMap;
 public enum TileType {
 
 
-     AIR("Air", 0, false, false, new Texture("Air.png")),
-    GRASS("Grass", 0, true, false, new Texture("Grass.png")),
-    DIRT("Dirt", 2, true, false, createTexture("Dirt.png"));
+     AIR("Air", 0, false, false),
+    STRAIGHT_WALL("Straight Wall", 1, true, false, createTexture("straight_wall.png"));
 
 
-
-    //String values
     private Texture texture;
     private String name;
-
-    //Integer values
     private int id;
-
     static int tileSize = 16;
-
     private int x;
     private int y;
-     
-    //Booleans
     private boolean collidable;
     private boolean hazard;
+    private boolean textureOn;
 
     private TileType(String name, int id, boolean collidable, boolean hazard, Texture texture) {
         this.name = name;
@@ -35,6 +27,11 @@ public enum TileType {
         this.collidable = collidable;
         this.hazard = hazard;
         this.texture = texture;
+        textureOn = true;
+    }
+    private TileType(String name, int id, boolean collidable, boolean hazard) {
+        this(name,id,collidable,hazard,null);
+        textureOn = false;
     }
 
     private static Texture createTexture(String texturePath) {
@@ -58,8 +55,10 @@ public enum TileType {
     }
 
     public Texture getTexture () {
-        return texture;
-
+        if (textureOn) {
+            return texture;
+        }
+        return null;
     }
 
 
@@ -101,5 +100,12 @@ public enum TileType {
 
     public static int getTileSize() {
         return tileSize;
+    }
+
+    public boolean hasTexture () {
+        if (textureOn == false) {
+            return false;
+        }
+        return true;
     }
 }
