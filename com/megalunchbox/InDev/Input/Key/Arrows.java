@@ -14,12 +14,12 @@ public class Arrows {
         }
 
         @Override
-        public void onPress(Input h) {
+        public void onPress() {
 
         }
 
         @Override
-        public void onHold(Input h) {
+        public void onHold() {
 
         }
     }
@@ -32,12 +32,12 @@ public class Arrows {
         }
 
         @Override
-        public void onPress(Input h) {
+        public void onPress() {
 
         }
 
         @Override
-        public void onHold(Input h) {
+        public void onHold() {
 
         }
     }
@@ -50,12 +50,12 @@ public class Arrows {
         }
 
         @Override
-        public void onPress(Input h) {
+        public void onPress() {
 
         }
 
         @Override
-        public void onHold(Input h) {
+        public void onHold() {
 
         }
     }
@@ -68,12 +68,12 @@ public class Arrows {
 
 
         @Override
-        public void onPress(Input h) {
+        public void onPress() {
 
         }
 
         @Override
-        public void onHold(Input h) {
+        public void onHold() {
 
         }
     }

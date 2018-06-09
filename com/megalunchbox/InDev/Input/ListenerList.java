@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class ListenerList {
 
-    public static ArrayList<InputListener> list = new ArrayList<InputListener>();
+    private static ArrayList<InputListener> list = new ArrayList<InputListener>();
 
     static public void addListener(InputListener o) {
         list.add(o);
@@ -18,5 +18,7 @@ public class ListenerList {
         return list.get(i);
     }
 
-
+    public static ArrayList<InputListener> getList() {
+        return list;
+    }
 }
