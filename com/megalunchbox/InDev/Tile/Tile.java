@@ -4,11 +4,11 @@ import com.badlogic.gdx.graphics.Texture;
 
 import java.util.HashMap;
 
-public enum TileType {
+public enum Tile {
 
 
      AIR("Air", 0, false, false),
-    STRAIGHT_WALL("Straight Wall", 1, true, false, createTexture("straight_wall.png"));
+    DIRT("Dirt", 1, true, false, createTexture("core/assets/Dirt.png"));
 
 
     private Texture texture;
@@ -21,7 +21,7 @@ public enum TileType {
     private boolean hazard;
     private boolean textureOn;
 
-    private TileType(String name, int id, boolean collidable, boolean hazard, Texture texture) {
+    private Tile(String name, int id, boolean collidable, boolean hazard, Texture texture) {
         this.name = name;
         this.id = id;
         this.collidable = collidable;
@@ -29,7 +29,7 @@ public enum TileType {
         this.texture = texture;
         textureOn = true;
     }
-    private TileType(String name, int id, boolean collidable, boolean hazard) {
+    private Tile(String name, int id, boolean collidable, boolean hazard) {
         this(name,id,collidable,hazard,null);
         textureOn = false;
     }
@@ -62,16 +62,16 @@ public enum TileType {
     }
 
 
-    private static HashMap<Integer, TileType> tileMap;
+    private static HashMap<Integer, Tile> tileMap;
 
     static {
-        tileMap = new HashMap<Integer, TileType>();
-        for (TileType tileType : TileType.values()) {
-            tileMap.put(tileType.getId(), tileType);
+        tileMap = new HashMap<Integer, Tile>();
+        for (Tile tile : Tile.values()) {
+            tileMap.put(tile.getId(), tile);
         }
     }
 
-    public static TileType getTileTypeById (int id) {
+    public static Tile getTileTypeById (int id) {
         return tileMap.get(id);
     }
      

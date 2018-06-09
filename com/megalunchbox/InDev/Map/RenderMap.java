@@ -1,13 +1,18 @@
 package com.megalunchbox.InDev.Map;
 
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.megalunchbox.InDev.Graphics.Camera;
 import com.megalunchbox.InDev.Graphics.RenderGraphics;
-import com.megalunchbox.InDev.Tile.TileType;
+import com.megalunchbox.InDev.Tile.Tile;
 
 
 public class RenderMap {
 
     static SpriteBatch batch;
+
+    Texture texture;
 
 
     public void create() {
@@ -16,25 +21,21 @@ public class RenderMap {
 
 
     public void render() {
-
-        //Todo: Render map by location of the camera
-        
-        TileType tile;
+        Tile tile;
         RenderMap.batch.begin();
 
-        for (int y = 0; y < Map.height; y++) {
+        for (int y = 0; y < Map.getHeight(); y++) {
 
-            for (int x = 0; x < Map.width; x++) {
+            for (int x = 0; x < Map.getWidth(); x++) {
 
-                tile = Map.manager.getTileByCoordinate(x, y);
-                if (tile.getName() != TileType.AIR.getName()) {
-                    RenderGraphics.draw(RenderMap.batch, tile.getTexture(), x, y);
-
+                tile = Map.getManager().getTileByCoordinate(x, y);
+                if (tile.getName() != Tile.AIR.getName()) {
+                    RenderGraphics.draw(batch, tile.getTexture(), x, y);
                 }
             }
         }
-        RenderMap.batch.end();
 
+        batch.end();
     }
 
     public void dispose() {

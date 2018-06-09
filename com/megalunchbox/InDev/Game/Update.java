@@ -14,8 +14,7 @@ public class Update {
 
     public void update(OrthographicCamera cam) {
 
-        Camera.updateHeight();
-        Camera.updateWidth();
+      new Camera();
 
 
     }

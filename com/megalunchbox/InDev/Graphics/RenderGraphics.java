@@ -2,7 +2,7 @@ package com.megalunchbox.InDev.Graphics;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.megalunchbox.InDev.Tile.TileType;
+import com.megalunchbox.InDev.Tile.Tile;
 
 public class RenderGraphics {
 
@@ -22,7 +22,7 @@ TODO: implement coordinate system so this method doesn't draw incorrectly.
    */
 
   public static void draw(SpriteBatch batch, Texture texture, float x, float y) {
-    batch.draw(texture, x * TileType.getTileSize(), y * TileType.getTileSize());
+    batch.draw(texture, x * Tile.getTileSize(), y * Tile.getTileSize());
   }
 
 

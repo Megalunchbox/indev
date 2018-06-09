@@ -6,16 +6,15 @@ import java.util.LinkedList;
 
 public class TileManager {
 
-  LinkedList<TileType> tileList;
+  LinkedList<Tile> tileList;
 
-  public TileManager (LinkedList<TileType> tileList) {
+  public TileManager (LinkedList<Tile> tileList) {
     this.tileList = tileList;
   }
 
-  public void createTile(TileType tileType, int x, int y) {
-    tileList.add(tileType);
-    tileType.setX(x);
-    tileType.setY(y);
+  public void createTile(Tile tile, int x, int y) {
+    tile.setLoc(x, y);
+    tileList.add(tile);
   }
 
   //Gets the X by the element in the list
@@ -29,7 +28,7 @@ public class TileManager {
   }
   
 
-  public LinkedList<TileType> getList() {
+  public LinkedList<Tile> getList() {
     return tileList;
   }
 
@@ -38,12 +37,12 @@ public class TileManager {
    *
    * @param x
    * @param y
-   * @return TileType
+   * @return Tile
    */
-  public TileType getTileByCoordinate(int x, int y) {
+  public Tile getTileByCoordinate(int x, int y) {
     int expression = (y - 1) * Map.getWidth() + x;
     if (expression >= tileList.size()) {
-      TileType tile = TileType.AIR;
+      Tile tile = Tile.AIR;
       tile.setLoc(x, y);
       return tile;
     }
@@ -53,24 +52,24 @@ public class TileManager {
     else return tileList.get(x);
   }
   
-  public void copyTileInList(TileType tile, int x, int y) {
+  public void copyTileInList(Tile tile, int x, int y) {
      tileList.set((y - 1) * Map.getWidth() + x, tile);
      tile.setX(x);
      tile.setY(y);
   }
   
-  public void replaceTileInList(TileType replace, TileType with) {
+  public void replaceTileInList(Tile replace, Tile with) {
     tileList.set((replace.getY()) * Map.getWidth() + replace.getX(), with);
   }
   
   
   public void moveTileInList(int fromX, int fromY, int toY, int toX) {
-    TileType fromTile = getTileByCoordinate(fromX, fromY);
-    TileType toTile = getTileByCoordinate(toY, toX);
-    TileType air = TileType.AIR;
+    Tile fromTile = getTileByCoordinate(fromX, fromY);
+    Tile toTile = getTileByCoordinate(toY, toX);
+    Tile air = Tile.AIR;
     air.setLoc(fromX, fromY);
-    if (fromTile.getName() == TileType.AIR.getName()) return;
-    if (toTile.getName() != TileType.AIR.getName()) return;
+    if (fromTile.getName() == Tile.AIR.getName()) return;
+    if (toTile.getName() != Tile.AIR.getName()) return;
     
     tileList.set((fromY - 1) * Map.getWidth() + fromX, air);
     tileList.set((toY - 1) * Map.getWidth() + toX, fromTile);

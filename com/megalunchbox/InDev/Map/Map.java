@@ -1,18 +1,17 @@
 package com.megalunchbox.InDev.Map;
 
-import com.badlogic.gdx.Gdx;
+import com.megalunchbox.InDev.Graphics.Camera;
+import com.megalunchbox.InDev.Tile.Tile;
 import com.megalunchbox.InDev.Tile.TileManager;
-import com.megalunchbox.InDev.Tile.TileType;
 
 import java.util.LinkedList;
 
 public class Map {
 
-    static int scale = 0;
-    static int height = 1080 / 16;
-    static int width = 1920 / 16 ;
-    static TileManager manager = new TileManager(new LinkedList<TileType>());
-
+    private static int scale = 1;
+    private static int height = 1080 / Tile.getTileSize();
+    private static int width = 1920 / Tile.getTileSize() ;
+    private static TileManager manager = new TileManager(new LinkedList<Tile>());
 
     public static int getHeight() {
         return height;
@@ -24,5 +23,13 @@ public class Map {
 
     public static int getScale() {
         return scale;
+    }
+
+    public static void setScale(int scale) {
+        Map.scale = scale;
+    }
+
+    public static TileManager getManager() {
+        return manager;
     }
 }

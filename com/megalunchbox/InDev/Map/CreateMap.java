@@ -1,7 +1,6 @@
 package com.megalunchbox.InDev.Map;
 
-import com.badlogic.gdx.Gdx;
-import com.megalunchbox.InDev.Tile.TileType;
+import com.megalunchbox.InDev.Tile.Tile;
 
 public class CreateMap {
 
@@ -13,18 +12,16 @@ public class CreateMap {
 
 
     public void createMap() {
-        for (int y = 0; y <  Map.height; y++)
 
-        {
+        for (int y = 0; y <  Map.getHeight(); y++) {
 
-            for (int x = 0; x < Map.width; x++) {
+            for (int x = 0; x < Map.getWidth(); x++) {
 
+                if (y > 30) {
+                    Map.getManager().createTile(Tile.DIRT, x, y);
 
-
-                if (x == 4) {
-                    Map.manager.createTile(TileType.STRAIGHT_WALL, x, y);
                 } else {
-                    Map.manager.createTile(TileType.AIR, x, y);
+                    Map.getManager().createTile(Tile.AIR, x, y);
                 }
 
 
