@@ -7,3 +7,5 @@ Features:
 
 To-Do:
   - Random worlds
+  
+  Wouldnt mind a little help if anyone would like.
