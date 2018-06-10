@@ -1,6 +1,5 @@
 package com.megalunchbox.InDev.Game;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.megalunchbox.InDev.Map.RenderMap;
 
@@ -19,8 +18,6 @@ public class Render {
 
         new RenderMap().render();
 
-        cam = new OrthographicCamera();
-        cam.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
     }
 
     public void dispose() {

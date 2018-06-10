@@ -1,35 +1,24 @@
 package com.megalunchbox.InDev.Input;
 
-import com.badlogic.gdx.Input;
-import com.megalunchbox.InDev.Interface.InputInterface;
-
-
-public abstract class InputListener implements InputInterface {
+public abstract class InputListener {
 
     int keycode;
 
     public InputListener(int keycode) {
-    this.keycode = keycode;
-    ListenerList.addListener(this);
+        this.keycode = keycode;
+        onSettingState();
+        onMenuState();
+        onMapView();
+        onTerritoryView();
     }
 
+    public abstract void onSettingState();
 
-    public void onPress() {
+    public abstract void onMenuState();
 
-    }
+    public abstract void onMapView();
 
+    public abstract void onTerritoryView();
 
-    public void onHold() {
-
-    }
-
-
-    public void listenFor() {
-
-    }
-
-    public int getKeycode() {
-        return keycode;
-    }
 
 }

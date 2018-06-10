@@ -2,61 +2,37 @@ package com.megalunchbox.InDev.Graphics;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.megalunchbox.InDev.Map.Map;
 
 public class Camera {
 
-    OrthographicCamera cam  = new OrthographicCamera();
+    public static OrthographicCamera cam;
 
-    static int width;
-    static int height;
-
-    static int xLeftEdge = 0;
-    static int yBottomEdge = 0;
-    static int yTopEdge;
-    static int xRightEdge;
-
-
-    public Camera() {
-        updateWidth();
-        updateHeight();
+    public static OrthographicCamera getCam() {
+        return cam;
     }
 
-    public static void updateHeight() {
-        if (Map.getScale() == 0) {
-            height = Gdx.graphics.getHeight() / 16;
-            yTopEdge = height;
-            return;
-        }
-        height = Gdx.graphics.getWidth() / (16 * Map.getScale());
-        yTopEdge = height;
-        return;
+    public static void moveCam(int x, int y) {
+        cam.translate(x, y);
     }
 
-    public static void  updateWidth() {
-        if (Map.getScale() == 0) {
-            width = Gdx.graphics.getWidth() / (16);
-            width = xRightEdge;
-            return;
-        }
-        width = Gdx.graphics.getWidth() / (16 * Map.getScale());
-        width = xRightEdge;
-        return;
+    public static void moveCamLeft(int distance) {
+        cam.translate(distance * -1, 0);
     }
 
-    public static int getxLeftEdge() {
-        return xLeftEdge;
+    public static void moveCamRight(int distance) {
+        cam.translate(distance, 0);
     }
 
-    public static int getxRightEdge() {
-        return xRightEdge;
+    public static void moveCamDown(int distance) {
+        cam.translate(0, distance * -1);
     }
 
-    public static int getyBottomEdge() {
-        return yBottomEdge;
+    public static void moveCamUp(int distance) {
+        cam.translate(0, distance);
     }
 
-    public static int getyTopEdge() {
-        return yTopEdge;
-    }
+    public static void updateCam() {
+        cam.update();
+   }
+
 }

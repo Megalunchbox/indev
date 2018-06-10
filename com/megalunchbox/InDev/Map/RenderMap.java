@@ -1,5 +1,6 @@
 package com.megalunchbox.InDev.Map;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -12,9 +13,6 @@ public class RenderMap {
 
     static SpriteBatch batch;
 
-    Texture texture;
-
-
     public void create() {
         RenderMap.batch = new SpriteBatch();
         }
@@ -23,7 +21,7 @@ public class RenderMap {
     public void render() {
         Tile tile;
         RenderMap.batch.begin();
-
+        RenderMap.batch.setProjectionMatrix(Camera.cam.combined);
         for (int y = 0; y < Map.getHeight(); y++) {
 
             for (int x = 0; x < Map.getWidth(); x++) {
@@ -35,7 +33,7 @@ public class RenderMap {
             }
         }
 
-        batch.end();
+        RenderMap.batch.end();
     }
 
     public void dispose() {

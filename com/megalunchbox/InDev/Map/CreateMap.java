@@ -17,7 +17,7 @@ public class CreateMap {
 
             for (int x = 0; x < Map.getWidth(); x++) {
 
-                if (y > 30) {
+                if (y < 30) {
                     Map.getManager().createTile(Tile.DIRT, x, y);
 
                 } else {
