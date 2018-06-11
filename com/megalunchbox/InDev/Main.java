@@ -5,6 +5,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.megalunchbox.InDev.Game.Create;
 import com.megalunchbox.InDev.Game.Dispose;
@@ -19,15 +20,17 @@ public class Main extends ApplicationAdapter {
 	OrthographicCamera cam;
     SpriteBatch skyBatch;
     Texture texture;
+    BitmapFont font;
 	@Override
 	public void create () {
 
 		new Create().create();
         new CreateMap().createMap();
-		Camera.cam = new OrthographicCamera();
+
 		Camera.cam.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		skyBatch = new SpriteBatch();
 		texture = new Texture("core/assets/sky.png");
+		font = new BitmapFont();
 	}
 
 	@Override
@@ -38,7 +41,8 @@ public class Main extends ApplicationAdapter {
 
         skyBatch.begin();
         skyBatch.draw(texture, 0,0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        skyBatch.end();
+		font.draw(skyBatch, "X Pos: " + Camera.getPosXInGameWorld(Camera.cam.position.x) + " Y Pos: " + Camera.getPosYInGameWorld(Camera.cam.position.y), 10, Gdx.graphics.getHeight() - 20);
+		skyBatch.end();
 
         Input.checkInput();
         new Update().update();

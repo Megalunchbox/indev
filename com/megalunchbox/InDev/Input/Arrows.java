@@ -23,7 +23,9 @@ public class Arrows extends InputListener{
         super(123123);
 
     }
-
+    public static void update() {
+        camEdgeDistance = (Gdx.graphics.getWidth() / 2) * Camera.cam.zoom;
+    }
     public boolean checkPressed(int keycode) {
         if (Gdx.input.isKeyPressed(keycode)) {
             return true;
@@ -48,7 +50,6 @@ public class Arrows extends InputListener{
 
     @Override
     public void onTerritoryView() {
-        System.out.println("Cam x: " + Camera.cam.position.x);
         if(Gdx.input.isKeyPressed(upKey)) {
             Camera.moveCamUp(1);
         }
@@ -58,11 +59,11 @@ public class Arrows extends InputListener{
         }
 
         if(Gdx.input.isKeyPressed(leftKey)) {
-            if(Camera.getCam().position.x - camEdgeDistance > 0)
+            if(Camera.getPosXInGameWorld(Camera.getCam().position.x) - camEdgeDistance > 0)
             Camera.moveCamLeft(1);
         }
         if(checkPressed(rightKey)) {
-            if (Camera.getCam().position.x + camEdgeDistance < Map.getWidth() * Tile.getTileSize())
+            if (Camera.getPosXInGameWorld(Camera.getCam().position.x) + camEdgeDistance < (Map.getWidth() * Tile.getTileSize()))
 
                 Camera.moveCamRight(1);
         }
@@ -72,7 +73,19 @@ public class Arrows extends InputListener{
             }
         }
         if (checkPressed(zoomOutKey)) {
+            if (Camera.getCamZoom() != Camera.maxZoomLevel) {
+            if (Camera.cam.zoom < Camera.maxZoomLevel)
             Camera.cam.zoom = Camera.cam.zoom + 0.01f;
+            while(Camera.getPosXInGameWorld(Camera.getCam().position.x) - camEdgeDistance < 0) Camera.cam.position.x += 0.1;
+            if(Camera.getCamZoom() == Camera.maxZoomLevel) {
+                Camera.setCamX(Camera.getDefaultX());
+                Camera.setCamY(Camera.getDefaultY());
+
+                }
+            }
+        }
+        if (Gdx.input.isButtonPressed(Input.Buttons.LEFT)) {
+            System.out.println("Clicked X: " + Camera.getPosAtMouseInWorld().x + "  Clicked Y: " + Camera.getPosAtMouseInWorld().y);
         }
     }
 }
