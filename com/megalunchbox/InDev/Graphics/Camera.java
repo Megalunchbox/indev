@@ -64,12 +64,12 @@ public class Camera {
 
     public static float getPosYInGameWorld(float y) {
         Vector3 vector = Camera.cam.unproject(new Vector3(0,y,0));
-        return vector.x;
+        return vector.y;
     }
 
     public static float getPosYInGameWorld(int y) {
         Vector3 vector = Camera.cam.unproject(new Vector3(0,y,0));
-        return vector.x;
+        return vector.y;
     }
 
     public static float getCamX() {
@@ -134,7 +134,7 @@ public class Camera {
     }
 
     public static float getCamYPosInWorld() {
-        return getPosXInGameWorld(Camera.getCam().position.x);
+        return getPosYInGameWorld(Camera.getCam().position.y);
     }
 
 }
