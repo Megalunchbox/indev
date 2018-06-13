@@ -128,6 +128,15 @@ public class Camera {
     public static Vector3 getCamPos() {
         return cam.position;
     }
+
+    public static float getCamXPosInWorld() {
+        return getPosXInGameWorld(Camera.getCam().position.x);
+    }
+
+    public static float getCamYPosInWorld() {
+        return getPosXInGameWorld(Camera.getCam().position.x);
+    }
+
 }
 
 

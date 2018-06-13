@@ -15,19 +15,32 @@ public class Player extends Entity {
         setY(getY() + distance * speed);
     }
 
+    public void moveUp(float distance) {
+        setY(getY() + distance * speed);
+    }
+
     public void moveDown(int distance) {
+        setY(getY() - distance * speed);
+    }
+
+    public void moveDown(float distance) {
         setY(getY() - distance * speed);
     }
 
     public void moveRight(int distance) {
         setX(getX() + distance * speed);
     }
+
+    public void moveRight(float distance) {
+        setX(getX() + distance * speed);
+    }
+
     public void moveLeft(int distance) {
         setX(getX() - distance * speed);
     }
 
-    public void createPlayer(int x, int y) {
-        setLoc(x, y);
+    public void moveLeft(float distance) {
+        setX(getX() - distance * speed);
     }
 
     public void damage(int amount) {

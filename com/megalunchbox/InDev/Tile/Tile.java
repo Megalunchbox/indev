@@ -21,7 +21,7 @@ public enum Tile {
     private boolean hazard;
     private boolean textureOn;
 
-    private Tile(String name, int id, boolean collidable, boolean hazard, Texture texture) {
+    Tile(String name, int id, boolean collidable, boolean hazard, Texture texture) {
         this.name = name;
         this.id = id;
         this.collidable = collidable;
@@ -29,7 +29,7 @@ public enum Tile {
         this.texture = texture;
         textureOn = true;
     }
-    private Tile(String name, int id, boolean collidable, boolean hazard) {
+    Tile(String name, int id, boolean collidable, boolean hazard) {
         this(name,id,collidable,hazard,null);
         textureOn = false;
     }
@@ -103,9 +103,6 @@ public enum Tile {
     }
 
     public boolean hasTexture () {
-        if (textureOn == false) {
-            return false;
-        }
-        return true;
+        return textureOn != false;
     }
 }

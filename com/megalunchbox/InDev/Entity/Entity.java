@@ -1,27 +1,18 @@
 package com.megalunchbox.InDev.Entity;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.megalunchbox.InDev.Tile.Tile;
 
 abstract class Entity {
     
-    int x, y;
-    int health;
-    int maxHealth;
-    int maxSpeed;
-    int mass;
-    int speed = 0;
+    float x, y, health;
+    int maxHealth, maxSpeed, mass;
+    float speed = 0;
     boolean alive;
     Texture texture;
-    
-    public Entity() {
-        
-        health = 20;
-        maxSpeed = 5;
-        mass = 120;
-        texture = null;
-        maxHealth = 100;
-        alive = true;
-    }
+    float width, height;
+
+
 
     public Entity (Texture texture, int health, int maxHealth, int mass, int maxSpeed) {
 
@@ -36,9 +27,15 @@ abstract class Entity {
     }
 
 
+    public void setTexture(Texture texture) {
+        this.texture = texture;
+    }
 
+    public Texture getTexture() {
+        return texture;
+    }
 
-    public int getHealth() {
+    public float getHealth() {
         return health;  
 }
     
@@ -54,15 +51,23 @@ abstract class Entity {
      return maxHealth;   
     }
     
-    public int getSpeed() {
+    public float getSpeed() {
      return speed;   
     }
 
-    public int getX() {
+    public float getWidth() {
+        return width;
+    }
+
+    public float getHeight() {
+        return height;
+    }
+
+    public float getX() {
      return x;   
     }
 
-    public int getY() {
+    public float getY() {
      return y;   
     }
 
@@ -73,8 +78,11 @@ abstract class Entity {
     public void setHealth(int health) {
      this.health = health;   
     }
+    public void setHealth(float health) {
+        this.health = health;
+    }
     
-    public void setSpeed(int speed) {
+    public void setSpeed(float speed) {
         this.speed = speed;
     }
     public void kill() {
@@ -85,11 +93,17 @@ abstract class Entity {
      this.x = x;
      this.y = y;
     }
-    public void setX(int x) {
+
+    public void setLoc(float x, float y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    public void setX(float x) {
      this.x = x;
     }
 
-    public void setY(int y) {
+    public void setY(float y) {
     this.y = y;
     }
 
@@ -104,5 +118,21 @@ abstract class Entity {
             }
         }
         return false;
+    }
+
+    public static float DistanceFromEntity(Entity thisEntity, Entity otherEntity) {
+
+        float xDist = thisEntity.x - otherEntity.x;
+        float yDist = thisEntity.y - otherEntity.y;
+
+        return (xDist * xDist) + (yDist * yDist);
+    }
+
+    public static float DistanceFromBlock(Entity thisEntity, Tile tile) {
+
+        float xDist = thisEntity.x - tile.getX();
+        float yDist = thisEntity.y - tile.getY();
+
+        return (xDist * xDist) + (yDist * yDist);
     }
 }
