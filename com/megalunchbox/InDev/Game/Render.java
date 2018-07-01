@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.megalunchbox.InDev.Graphics.Button;
 import com.megalunchbox.InDev.Graphics.Graphics;
 import com.megalunchbox.InDev.Main;
 import com.megalunchbox.InDev.Map.Map;
@@ -18,6 +19,9 @@ public class Render {
     private static SpriteBatch overlayBatch;
     static BitmapFont font;
     private static Texture skyTexture;
+    private Button newGameButton;
+    private Button loadGameButton;
+    private Button settingsButton;
 
     public void create () {
         font = new BitmapFont();
@@ -27,6 +31,19 @@ public class Render {
         Camera.createCam();
         skyTexture = new Texture("core/assets/sky.png");
 
+        newGameButton = new Button(Gdx.graphics.getHeight()/10, Gdx.graphics.getWidth()/3, 0f, 0f, new Texture("core/assets/button_new_game.png"), "new-game-button");
+        newGameButton.setX(Gdx.graphics.getWidth()/2 - newGameButton.getWidth()/2);
+        newGameButton.setY(Gdx.graphics.getHeight() * 0.6f);
+
+        loadGameButton = new Button(Gdx.graphics.getHeight()/10, Gdx.graphics.getWidth()/3, 0f, 0f, new Texture("core/assets/button_load_game.png"), "load-game-button");
+        loadGameButton.setX(Gdx.graphics.getWidth()/2 - newGameButton.getWidth()/2);
+        loadGameButton.setY(Gdx.graphics.getHeight() * 0.5f);
+
+        settingsButton = new Button(Gdx.graphics.getHeight()/10, Gdx.graphics.getWidth()/3, 0f, 0f, new Texture("core/assets/button_settings.png"), "settings-menu-button");
+        settingsButton.setX(Gdx.graphics.getWidth()/2 - newGameButton.getWidth()/2);
+        settingsButton.setY(Gdx.graphics.getHeight() * 0.4f);
+
+
     }
 
 
@@ -34,13 +51,17 @@ public class Render {
         State currentState = State.getCurrentState();
 
         if(currentState == State.MENU) {
-            batch.begin();
-            batch.draw(new Texture("core/assets/button_base.png"), 100,100, 1000, 100);
-            batch.end();
+            Render.batch.begin();
+            Button.buttons.getFirst().draw(batch);
+            Button.buttons.get(1).draw(batch);
+            Button.buttons.get(2).draw(batch);
+            Render.batch.end();
         }
          else if (currentState == State.GAME) {
             if (ViewMode.getCurrentMode() == ViewMode.TERRITORY) {
+                renderSky(backgroundBatch, skyTexture);
                 renderMap(Main.testMap, batch);
+                renderOverlay(overlayBatch);
             }
         } else if (currentState == State.SETTING) {
 

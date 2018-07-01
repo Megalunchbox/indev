@@ -41,7 +41,9 @@ public class Arrows extends InputListener{
 
     @Override
     public void onMenuState() {
-
+        if (Gdx.input.justTouched()) {
+            System.out.println("Clicked X: " + Camera.getPosAtMouseInWorld().x + "  Clicked Y: " + Camera.getPosAtMouseInWorld().y);
+        }
     }
 
     @Override
