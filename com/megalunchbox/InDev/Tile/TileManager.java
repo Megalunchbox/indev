@@ -68,8 +68,8 @@ public class TileManager {
     Tile toTile = getTileByCoordinate(toY, toX);
     Tile air = Tile.AIR;
     air.setLoc(fromX, fromY);
-    if (fromTile.getName() == Tile.AIR.getName()) return;
-    if (toTile.getName() != Tile.AIR.getName()) return;
+    if (fromTile.getName().equals(Tile.AIR.getName())) return;
+    if (!toTile.getName().equals(Tile.AIR.getName())) return;
     
     tileList.set((fromY - 1) * Map.getWidth() + fromX, air);
     tileList.set((toY - 1) * Map.getWidth() + toX, fromTile);

@@ -4,7 +4,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.megalunchbox.InDev.Tile.Tile;
 
-public class RenderGraphics {
+public class Graphics {
 
 /*
 TODO: implement coordinate system so this method doesn't draw incorrectly.

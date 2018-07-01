@@ -1,6 +1,5 @@
 package com.megalunchbox.InDev.Game;
 
-import com.megalunchbox.InDev.Graphics.Camera;
 import com.megalunchbox.InDev.Input.Arrows;
 
 public class Update {

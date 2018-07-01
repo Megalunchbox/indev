@@ -4,29 +4,34 @@ import com.megalunchbox.InDev.Tile.Tile;
 
 public class CreateMap {
 
-    /*
-    Method: createMap()
-    Creates new map,
-    TODO: add noise and random generation
-    */
 
+    /**
+     * @param map The map you are wanting to generate
+     * @return The new generated map
+     */
 
-    public void createMap() {
+    public Map createMap(Map map) {
 
-        for (int y = 0; y <  Map.getHeight(); y++) {
+        Map newMap = map;
 
-            for (int x = 0; x < Map.getWidth(); x++) {
+        for (int y = 0; y <  newMap.getHeight(); y++) {
+
+            for (int x = 0; x < newMap.getWidth(); x++) {
 
                 if (y < 30) {
-                    Map.getManager().createTile(Tile.DIRT, x, y);
+                    newMap.getManager().createTile(Tile.DIRT, x, y);
 
                 } else {
-                    Map.getManager().createTile(Tile.AIR, x, y);
+                    newMap.getManager().createTile(Tile.AIR, x, y);
                 }
 
 
             }
 
         }
+
+        return newMap;
     }
+
+
 }

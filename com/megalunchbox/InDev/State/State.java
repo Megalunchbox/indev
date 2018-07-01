@@ -1,51 +1,54 @@
 package com.megalunchbox.InDev.State;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
-public class State {
+public enum State {
 
-    public int currentState;
-    String currentStateName;
+    MENU(0, "Menu"), //The title screen
+    GAME(1, "Game"), //Where you play the game :)
+    SETTING(2, "Setting"); //For changing things such as controls, resolution, and graphics (if your pc is that bad lmao)
 
-    ArrayList<StateBuilder> states = new ArrayList<StateBuilder>();
 
-    public static class StateBuilder {
+    static State currentState;
 
-        int id;
-        String name;
+    int id;
+    String name;
 
-        StateBuilder(int id, String name) {
-            this.id = id;
-            this.name = name;
-        }
+     State(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 
-        public String getName() {
-            return name;
-        }
+    public static State getCurrentState() {
+        return currentState;
+    }
 
-        public int getId() {
-            return id;
-        }
+    public static void setCurrentState(State currentState) {
+        State.currentState = currentState;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
     }
 
 
-    /**
-     *
-     * returns true if states are using the same id
-     *
-     * @return boolean
-     */
-    public boolean checkSameIds() {
-        ArrayList<Integer> usedIds = new ArrayList<Integer>();
-        for (int i = 0; i > states.size(); i++) {
-            int id = states.get(i).id;
-            usedIds.add(id);
-            for(int x = 0; x> usedIds.size(); x++) {
-                if (usedIds.get(x) == id) return true;
-            }
+    private static HashMap<Integer, State> stateMap;
+
+    static {
+        stateMap = new HashMap<Integer, State>();
+        for (State state : State.values()) {
+            stateMap.put(state.getId(), state);
         }
-        return false;
     }
+
+    public static State getStateModeById (int id) {
+        return stateMap.get(id);
+    }
+
 
 
 }

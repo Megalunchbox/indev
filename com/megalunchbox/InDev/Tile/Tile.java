@@ -35,7 +35,7 @@ public enum Tile {
     }
 
     private static Texture createTexture(String texturePath) {
-        return new Texture (texturePath);
+        return new Texture(texturePath);
     }
 
     public String getName() {

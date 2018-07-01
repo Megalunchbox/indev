@@ -1,4 +1,4 @@
-package com.megalunchbox.InDev.Graphics;
+package com.megalunchbox.InDev.Game;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -8,11 +8,11 @@ public class Camera {
 
     public static OrthographicCamera cam;
     public static Vector3 defaultPos;
-    public static float maxZoomLevel;
+    public static float maxZoomLevel = 0.8f;
 
     public static void createCam() {
         cam = new OrthographicCamera();
-        maxZoomLevel = cam.zoom;
+        cam.zoom = maxZoomLevel;
         defaultPos = cam.position;
     }
 
@@ -21,23 +21,23 @@ public class Camera {
         return cam;
     }
 
-    public static void moveCam(int x, int y) {
+    public static void moveCam(float x, float y) {
         cam.translate(x, y);
     }
 
-    public static void moveCamLeft(int distance) {
+    public static void moveCamLeft(float distance) {
         cam.translate(distance * -1, 0);
     }
 
-    public static void moveCamRight(int distance) {
+    public static void moveCamRight(float distance) {
         cam.translate(distance, 0);
     }
 
-    public static void moveCamDown(int distance) {
+    public static void moveCamDown(float distance) {
         cam.translate(0, distance * -1);
     }
 
-    public static void moveCamUp(int distance) {
+    public static void moveCamUp(float distance) {
         cam.translate(0, distance);
     }
 
@@ -49,35 +49,27 @@ public class Camera {
         return Camera.cam.unproject(new Vector3(Gdx.input.getX(), Gdx.input.getY(), 0));
    }
 
-   public static Vector3 getPosInGameWorld(int x, int y) {
+   public static Vector3 getPosInGameWorld(float x, float y) {
         return Camera.cam.unproject(new Vector3(x, y, 0));
    }
 
-   public static float getPosXInGameWorld(int x) {
-        Vector3 vector = Camera.cam.unproject(new Vector3(x,0,0));
-        return vector.x;
-   }
     public static float getPosXInGameWorld(float x) {
         Vector3 vector = Camera.cam.unproject(new Vector3(x,0,0));
         return vector.x;
     }
 
     public static float getPosYInGameWorld(float y) {
-        Vector3 vector = Camera.cam.unproject(new Vector3(0,y,0));
+        Vector3 vector = Camera.cam.unproject(new Vector3(0, y,0));
         return vector.y;
     }
 
-    public static float getPosYInGameWorld(int y) {
-        Vector3 vector = Camera.cam.unproject(new Vector3(0,y,0));
-        return vector.y;
-    }
 
     public static float getCamX() {
         return cam.position.x;
     }
 
     public static float getCamY() {
-        return cam.position.x;
+        return cam.position.y;
     }
 
     public static void setCamX(float x) {
@@ -130,11 +122,11 @@ public class Camera {
     }
 
     public static float getCamXPosInWorld() {
-        return getPosXInGameWorld(Camera.getCam().position.x);
+        return getPosXInGameWorld(Camera.cam.position.x);
     }
 
     public static float getCamYPosInWorld() {
-        return getPosYInGameWorld(Camera.getCam().position.y);
+        return getPosYInGameWorld(Camera.cam.position.y);
     }
 
 }

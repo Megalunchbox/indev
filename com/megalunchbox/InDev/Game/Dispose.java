@@ -1,7 +1,5 @@
 package com.megalunchbox.InDev.Game;
 
-import com.badlogic.gdx.graphics.OrthographicCamera;
-
 public class Dispose {
 
 

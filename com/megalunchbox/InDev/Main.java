@@ -3,34 +3,29 @@ package com.megalunchbox.InDev;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.megalunchbox.InDev.Game.Create;
 import com.megalunchbox.InDev.Game.Dispose;
 import com.megalunchbox.InDev.Game.Render;
 import com.megalunchbox.InDev.Game.Update;
-import com.megalunchbox.InDev.Graphics.Camera;
+import com.megalunchbox.InDev.Game.Camera;
 import com.megalunchbox.InDev.Input.Input;
 import com.megalunchbox.InDev.Map.CreateMap;
+import com.megalunchbox.InDev.Map.Map;
+import com.megalunchbox.InDev.State.State;
 
 public class Main extends ApplicationAdapter {
 
-	OrthographicCamera cam;
-    SpriteBatch skyBatch;
-    Texture texture;
-    BitmapFont font;
+	public static Map testMap;
+
 	@Override
 	public void create () {
 
+		testMap = new Map();
 		new Create().create();
-        new CreateMap().createMap();
-
+        new CreateMap().createMap(testMap);
 		Camera.cam.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-		skyBatch = new SpriteBatch();
-		texture = new Texture("core/assets/sky.png");
-		font = new BitmapFont();
+		State.setCurrentState(State.MENU);
+
 	}
 
 	@Override
@@ -39,14 +34,11 @@ public class Main extends ApplicationAdapter {
         g();
 
 
-        skyBatch.begin();
-        skyBatch.draw(texture, 0,0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-		font.draw(skyBatch, "X Pos: " + Camera.getPosXInGameWorld(Camera.cam.position.x) + " Y Pos: " + Camera.getPosYInGameWorld(Camera.cam.position.y), 10, Gdx.graphics.getHeight() - 20);
-		skyBatch.end();
-
-        Input.checkInput();
+		Input.checkInput();
         new Update().update();
-        new Render().render(cam);
+        new Render().render();
+
+
 
         }
 
@@ -65,7 +57,4 @@ public class Main extends ApplicationAdapter {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
     }
 
-	public OrthographicCamera getCam() {
-		return cam;
-	}
 }
