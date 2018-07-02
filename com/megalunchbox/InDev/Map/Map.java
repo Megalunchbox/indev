@@ -14,7 +14,7 @@ public class Map {
     try serialization maybe :D
     */
 
-    private static Map currentMap;
+    static Map currentMap;
     private int height;
     private int width;
     private TileManager manager;
@@ -23,14 +23,14 @@ public class Map {
     public Map() {
         this.width = 1920 / Tile.getTileSize();
         this.height = 1080 / Tile.getTileSize();
-        this.manager = new TileManager(new LinkedList<Tile>());
+        this.manager = new TileManager(new LinkedList<Tile>(), this);
     }
 
     public Map(int height, int width) {
 
         this.height = height / Tile.getTileSize();
         this.width = width / Tile.getTileSize();
-        this.manager = new TileManager(new LinkedList<Tile>());
+        this.manager = new TileManager(new LinkedList<Tile>(), this);
     }
 
     public Map(int width, int height, TileManager manager) {
@@ -55,8 +55,8 @@ public class Map {
         return manager;
     }
 
-    public void setCurrentMap(Map currentMap) {
-        this.currentMap = currentMap;
+    public static void setCurrentMap(Map m) {
+        currentMap = m;
     }
 
     public static Map getCurrentMap() {

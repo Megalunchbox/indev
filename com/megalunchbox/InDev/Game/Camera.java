@@ -8,7 +8,12 @@ public class Camera {
 
     public static OrthographicCamera cam;
     public static Vector3 defaultPos;
-    public static float maxZoomLevel = 0.8f;
+    public static float maxZoomLevel = 1f;
+    public int horizontalSpeed;
+    public int verticalSpeed;
+    public int lastHorizontalMovement;
+    public int lastVerticalMovement;
+
 
     public static void createCam() {
         cam = new OrthographicCamera();

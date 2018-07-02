@@ -7,9 +7,12 @@ import java.util.LinkedList;
 public class TileManager {
 
   LinkedList<Tile> tileList;
+  Map map;
 
-  public TileManager (LinkedList<Tile> tileList) {
+
+  public TileManager (LinkedList<Tile> tileList, Map map) {
     this.tileList = tileList;
+    this.map = map;
   }
 
   public void createTile(Tile tile, int x, int y) {
@@ -40,7 +43,7 @@ public class TileManager {
    * @return Tile
    */
   public Tile getTileByCoordinate(int x, int y) {
-    int expression = (y - 1) * Map.getWidth() + x;
+    int expression = (y - 1) * map.getWidth() + x;
     if (expression >= tileList.size()) {
       Tile tile = Tile.AIR;
       tile.setLoc(x, y);
@@ -53,13 +56,13 @@ public class TileManager {
   }
   
   public void copyTileInList(Tile tile, int x, int y) {
-     tileList.set((y - 1) * Map.getWidth() + x, tile);
+     tileList.set((y - 1) * map.getWidth() + x, tile);
      tile.setX(x);
      tile.setY(y);
   }
   
   public void replaceTileInList(Tile replace, Tile with) {
-    tileList.set((replace.getY()) * Map.getWidth() + replace.getX(), with);
+    tileList.set((replace.getY()) * map.getWidth() + replace.getX(), with);
   }
   
   
@@ -71,8 +74,8 @@ public class TileManager {
     if (fromTile.getName().equals(Tile.AIR.getName())) return;
     if (!toTile.getName().equals(Tile.AIR.getName())) return;
     
-    tileList.set((fromY - 1) * Map.getWidth() + fromX, air);
-    tileList.set((toY - 1) * Map.getWidth() + toX, fromTile);
+    tileList.set((fromY - 1) * map.getWidth() + fromX, air);
+    tileList.set((toY - 1) * map.getWidth() + toX, fromTile);
     
     
   }

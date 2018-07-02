@@ -89,5 +89,16 @@ public class Button {
         batch.draw(getTexture(), getX(), getY(), getWidth(), getHeight());
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public static LinkedList<Button> getButtons() {
+        return buttons;
+    }
 
 }

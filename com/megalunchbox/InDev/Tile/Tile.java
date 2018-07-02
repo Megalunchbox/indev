@@ -8,7 +8,7 @@ public enum Tile {
 
 
      AIR("Air", 0, false, false),
-    DIRT("Dirt", 1, true, false, createTexture("core/assets/Dirt.png"));
+    DIRT("Dirt", 1, true, false, createTexture("Dirt.png"));
 
 
     private Texture texture;

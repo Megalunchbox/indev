@@ -12,6 +12,7 @@ import com.megalunchbox.InDev.Input.Input;
 import com.megalunchbox.InDev.Map.CreateMap;
 import com.megalunchbox.InDev.Map.Map;
 import com.megalunchbox.InDev.State.State;
+import com.megalunchbox.InDev.State.ViewMode;
 
 public class Main extends ApplicationAdapter {
 
@@ -22,9 +23,11 @@ public class Main extends ApplicationAdapter {
 
 		testMap = new Map();
 		new Create().create();
-        new CreateMap().createMap(testMap);
+        testMap = CreateMap.createMap(testMap);
 		Camera.cam.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-		State.setCurrentState(State.MENU);
+		State.setCurrentState(State.GAME);
+		ViewMode.setCurrentMode(ViewMode.TERRITORY);
+		Map.setCurrentMap(testMap);
 
 	}
 
@@ -32,8 +35,6 @@ public class Main extends ApplicationAdapter {
 	public void render () {
 
         g();
-
-
 		Input.checkInput();
         new Update().update();
         new Render().render();

@@ -29,17 +29,17 @@ public class Render {
         backgroundBatch = new SpriteBatch();
         overlayBatch = new SpriteBatch();
         Camera.createCam();
-        skyTexture = new Texture("core/assets/sky.png");
+        skyTexture = new Texture("sky.png");
 
-        newGameButton = new Button(Gdx.graphics.getHeight()/10, Gdx.graphics.getWidth()/3, 0f, 0f, new Texture("core/assets/button_new_game.png"), "new-game-button");
+        newGameButton = new Button(Gdx.graphics.getHeight()/10, Gdx.graphics.getWidth()/3, 0f, 0f, new Texture("button_new_game.png"), "new-game-button");
         newGameButton.setX(Gdx.graphics.getWidth()/2 - newGameButton.getWidth()/2);
         newGameButton.setY(Gdx.graphics.getHeight() * 0.6f);
 
-        loadGameButton = new Button(Gdx.graphics.getHeight()/10, Gdx.graphics.getWidth()/3, 0f, 0f, new Texture("core/assets/button_load_game.png"), "load-game-button");
+        loadGameButton = new Button(Gdx.graphics.getHeight()/10, Gdx.graphics.getWidth()/3, 0f, 0f, new Texture("button_load_game.png"), "load-game-button");
         loadGameButton.setX(Gdx.graphics.getWidth()/2 - newGameButton.getWidth()/2);
         loadGameButton.setY(Gdx.graphics.getHeight() * 0.5f);
 
-        settingsButton = new Button(Gdx.graphics.getHeight()/10, Gdx.graphics.getWidth()/3, 0f, 0f, new Texture("core/assets/button_settings.png"), "settings-menu-button");
+        settingsButton = new Button(Gdx.graphics.getHeight()/10, Gdx.graphics.getWidth()/3, 0f, 0f, new Texture("button_settings.png"), "settings-menu-button");
         settingsButton.setX(Gdx.graphics.getWidth()/2 - newGameButton.getWidth()/2);
         settingsButton.setY(Gdx.graphics.getHeight() * 0.4f);
 
@@ -78,8 +78,9 @@ public class Render {
 
         if (ViewMode.getCurrentMode().equals(ViewMode.TERRITORY)) {
             Tile tile;
-            batch.begin();
             batch.setProjectionMatrix(Camera.cam.combined);
+            batch.begin();
+
 
             for (int y = 0; y < currentMap.getHeight(); y++) {
 
@@ -108,8 +109,9 @@ public class Render {
     public void renderOverlay(SpriteBatch batch) {
         if (State.getCurrentState() == State.GAME && ViewMode.getCurrentMode() == ViewMode.TERRITORY) {
             batch.begin();
-            font.draw(batch, "X Pos: " + Camera.getPosXInGameWorld(Camera.cam.position.x) + " Y Pos: " + Camera.getCamYPosInWorld(), 10, Gdx.graphics.getHeight() - 20);
+            font.draw(batch, "Cam X: " + Camera.getPosXInGameWorld(Camera.cam.position.x) + " Cam Y: " + Camera.getPosYInGameWorld(Camera.cam.position.y), 10, Gdx.graphics.getHeight() - 20);
             font.draw(batch, "FPS: " + Integer.toString( Gdx.graphics.getFramesPerSecond()), 10, Gdx.graphics.getHeight() - 50);
+            font.draw(batch, "Zoom: " + Camera.getCamZoom(), 10, Gdx.graphics.getHeight() - 70);
             batch.end();
         }
     }

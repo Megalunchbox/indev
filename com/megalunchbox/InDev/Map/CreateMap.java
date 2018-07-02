@@ -10,7 +10,7 @@ public class CreateMap {
      * @return The new generated map
      */
 
-    public Map createMap(Map map) {
+    public static Map createMap(Map map) {
 
         Map newMap = map;
 

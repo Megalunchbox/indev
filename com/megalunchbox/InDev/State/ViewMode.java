@@ -42,4 +42,8 @@ public enum ViewMode {
     public static ViewMode getCurrentMode() {
         return currentMode;
     }
+
+    public static void setCurrentMode(ViewMode currentMode) {
+        ViewMode.currentMode = currentMode;
+    }
 }
