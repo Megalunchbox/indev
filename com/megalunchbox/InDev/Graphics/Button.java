@@ -2,16 +2,13 @@ package com.megalunchbox.InDev.Graphics;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.megalunchbox.InDev.Game.Camera;
 
 import java.util.LinkedList;
 
 public class Button {
 
-    public static LinkedList<Button> buttons = new LinkedList<Button>();
-
-
     String name;
-    int id;
     float height;
     float width;
     float x;
@@ -26,14 +23,13 @@ public class Button {
         this.x = x;
         this.y = y;
         this.texture = texture;
-        this.id = buttons.size();
         this.name = name;
-        buttons.add(this);
+
     }
 
     public boolean areCoordsWithinButton(float x, float y) {
         if (x >= getX() && x <= getX() + getWidth()) {
-            if (y >= getY() && y <= getY()) {
+            if (y >= getY() && y <= getY() + getHeight()) {
                 return true;
             }
         }
@@ -62,28 +58,24 @@ public class Button {
 
     public void setTexture(Texture texture) {
         this.texture = texture;
-        buttons.set(id, this);
     }
 
     public void setHeight(float height) {
         this.height = height;
-        buttons.set(id, this);
     }
 
     public void setWidth(float width) {
         this.width = width;
-        buttons.set(id, this);
     }
 
     public void setX(float x) {
         this.x = x;
-        buttons.set(id, this);
     }
 
     public void setY(float y) {
         this.y = y;
-        buttons.set(id, this);
     }
+
 
     public void draw(SpriteBatch batch) {
         batch.draw(getTexture(), getX(), getY(), getWidth(), getHeight());
@@ -93,12 +85,5 @@ public class Button {
         return name;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public static LinkedList<Button> getButtons() {
-        return buttons;
-    }
 
 }

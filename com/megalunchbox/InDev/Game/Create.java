@@ -6,6 +6,8 @@ public class Create {
 
      new Render().create();
      new Update().create();
+     Game.create();
+
     }
 
 }

@@ -25,7 +25,7 @@ public class Main extends ApplicationAdapter {
 		new Create().create();
         testMap = CreateMap.createMap(testMap);
 		Camera.cam.setToOrtho(false, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-		State.setCurrentState(State.GAME);
+		State.setCurrentState(State.MENU);
 		ViewMode.setCurrentMode(ViewMode.TERRITORY);
 		Map.setCurrentMap(testMap);
 

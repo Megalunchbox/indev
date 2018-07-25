@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.math.Vector3;
 import com.megalunchbox.InDev.Game.Camera;
+import com.megalunchbox.InDev.Game.Game;
 import com.megalunchbox.InDev.Graphics.Button;
 import com.megalunchbox.InDev.Map.Map;
 import com.megalunchbox.InDev.State.State;
@@ -47,22 +48,19 @@ public class Arrows extends InputListener{
     @Override
     public void onMenuState() {
         if (Gdx.input.justTouched()) {
-            Button b;
-            for(int i = 0; i > Button.buttons.size(); i++) {
-                b = Button.buttons.get(i);
-                Vector3 mouseVector = Camera.getPosAtMouseInWorld();
 
-                if (b.getName() == "button-new-game") {
-                    if (b.areCoordsWithinButton(mouseVector.x, mouseVector.y)) {
+            if (Game.getLoadGameButton().areCoordsWithinButton(Camera.getPosAtMouseInWorld().x, Camera.getPosAtMouseInWorld().y)) {
 
-                        System.out.println("Log: clicked within button");
-                        State.setCurrentState(State.GAME);
-                        ViewMode.setCurrentMode(ViewMode.TERRITORY);
-
-                    }
-
-                }
             }
+            else if (Game.getNewGameButton().areCoordsWithinButton(Camera.getPosAtMouseInWorld().x, Camera.getPosAtMouseInWorld().y)) {
+                State.setCurrentState(State.GAME);
+                ViewMode.setCurrentMode(ViewMode.TERRITORY);
+
+            }
+            else if (Game.getSettingsButton().areCoordsWithinButton(Camera.getPosAtMouseInWorld().x, Camera.getPosAtMouseInWorld().y)) {
+
+            }
+
         }
     }
 

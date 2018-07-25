@@ -19,9 +19,6 @@ public class Render {
     private static SpriteBatch overlayBatch;
     static BitmapFont font;
     private static Texture skyTexture;
-    private Button newGameButton;
-    private Button loadGameButton;
-    private Button settingsButton;
 
     public void create () {
         font = new BitmapFont();
@@ -31,19 +28,6 @@ public class Render {
         Camera.createCam();
         skyTexture = new Texture("sky.png");
 
-        newGameButton = new Button(Gdx.graphics.getHeight()/10, Gdx.graphics.getWidth()/3, 0f, 0f, new Texture("button_new_game.png"), "new-game-button");
-        newGameButton.setX(Gdx.graphics.getWidth()/2 - newGameButton.getWidth()/2);
-        newGameButton.setY(Gdx.graphics.getHeight() * 0.6f);
-
-        loadGameButton = new Button(Gdx.graphics.getHeight()/10, Gdx.graphics.getWidth()/3, 0f, 0f, new Texture("button_load_game.png"), "load-game-button");
-        loadGameButton.setX(Gdx.graphics.getWidth()/2 - newGameButton.getWidth()/2);
-        loadGameButton.setY(Gdx.graphics.getHeight() * 0.5f);
-
-        settingsButton = new Button(Gdx.graphics.getHeight()/10, Gdx.graphics.getWidth()/3, 0f, 0f, new Texture("button_settings.png"), "settings-menu-button");
-        settingsButton.setX(Gdx.graphics.getWidth()/2 - newGameButton.getWidth()/2);
-        settingsButton.setY(Gdx.graphics.getHeight() * 0.4f);
-
-
     }
 
 
@@ -51,11 +35,11 @@ public class Render {
         State currentState = State.getCurrentState();
 
         if(currentState == State.MENU) {
-            Render.batch.begin();
-            Button.buttons.getFirst().draw(batch);
-            Button.buttons.get(1).draw(batch);
-            Button.buttons.get(2).draw(batch);
-            Render.batch.end();
+            batch.begin();
+            Game.getSettingsButton().draw(batch);
+            Game.getLoadGameButton().draw(batch);
+            Game.getNewGameButton().draw(batch);
+            batch.end();
         }
          else if (currentState == State.GAME) {
             if (ViewMode.getCurrentMode() == ViewMode.TERRITORY) {
