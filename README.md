@@ -1,11 +1,3 @@
-# Indev-game
+# Trash
 
-Upcoming open source rts game with a randomly generated world made using libgdx
-
-Features: 
-- None the game is new
-
-To-Do:
-  - Random worlds
-  
-  Wouldnt mind a little help if anyone would like.
+This is being thrown in the dumpster, new game being created under my account called Ybardok. (Just used a name generator don't judge)
